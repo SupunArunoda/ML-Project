@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "train_data <- read.csv(\"data/Training set values.csv\", header = T) #Read Train Data\nlabel_data <- read.csv(\"data/Training set labels.csv\", header = T) #Read Train Data Labels\ntest_data <- read.csv(\"data/Test set values.csv\", header = T) #Read Test Data\ntrain_data$status_group <- label_data$status_group #Add Train Data Labels to Actual\n\n",
+    "created" : 1495217609987.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2488814660",
+    "id" : "277B44F3",
+    "lastKnownWriteTime" : 1495217619,
+    "last_content_update" : 1495218317675,
+    "path" : "E:/Acadamic/Semester 7/Machine Learning/Project/ML_Final/Main.R",
+    "project_path" : "Main.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
