@@ -1,7 +1,13 @@
-train_data <- read.csv("data/train_dataing set values.csv", header = T) #Read train_data Data
-label_data <- read.csv("data/train_dataing set labels.csv", header = T) #Read train_data Data Labels
+train_data <- read.csv("data/Training set values.csv", header = T) #Read train_data Data
+label_data <- read.csv("data/Training set labels.csv", header = T) #Read train_data Data Labels
 test_data <- read.csv("data/Test set values.csv", header = T) #Read Test Data
 train_data$status_group <- label_data$status_group #Add train_data Data Labels to Actual
+
+#Add years in operation feature
+tmp <- format(as.Date(train_data$date_recorded, '%Y-%m-%d'),'%Y') 
+tmp <- as.numeric(tmp)
+train_data$yip <- tmp - train_data$construction_year
+train_data$yip[train_data$yip > 2000] <- 0
 
 #Data Cleaning Proceess
 
