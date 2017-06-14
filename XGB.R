@@ -145,3 +145,26 @@ for(i in 9:9){
                          maximize = FALSE,save_name = "model.xgb")
   #early.stop.round = 20,
   
+  
+  
+  #Testing the model against Validation Set
+  pred.valid <- predict(model.xgb, newvalid)
+  output.valid <- data.frame(id = validdata$id, status_group = pred.valid)
+  output.valid$status_group[output.valid$status_group == 0] = "functional";
+  output.valid$status_group[output.valid$status_group == 1] = "functional needs repair";
+  output.valid$status_group[output.valid$status_group == 2] = "non functional";
+  
+  VL[VL == 0] = "functional"
+  VL[VL == 1] = "functional needs repair"
+  VL[VL == 2] = "non functional"
+  print(mean(output.valid$status_group == VL))
+  #accuracies[i] <- mean(output.valid$status_group == VL)
+}
+#Testing the model against test data
+pred.test <- predict(model.xgb, newtest)
+output.test <- data.frame(id = testdata$id, status_group = pred.test)
+output.test$status_group[output.test$status_group == 0] = "functional";
+output.test$status_group[output.test$status_group == 1] = "functional needs repair";
+output.test$status_group[output.test$status_group == 2] = "non functional";
+print("hello")
+write.csv(output.test, file = "submissionSeed9_1.csv", row.names = F)
